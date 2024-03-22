@@ -1,8 +1,10 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
 
 import { Header } from '@/components/common';
 
-import { DrawerProps as Props } from '@/types/props';
+interface Props {
+  children: React.ReactNode;
+}
 
 const items = [
   { name: 'Perfil', href: '#' },
@@ -23,21 +25,21 @@ export function Drawer({ children }: Props) {
         <label htmlFor="drawer" className="drawer-overlay" />
         <div className="menu min-h-full w-80 gap-4 bg-base-200 p-4 text-base-content">
           <div className="flex h-40 items-end justify-between rounded-md bg-primary/75 pb-2 pl-2 text-white">
-            <Link
+            <NextLink
               href="/"
               className="flex items-center justify-center gap-2 font-sans text-xl font-bold"
             >
               4Matt Tecnologia
-            </Link>
+            </NextLink>
           </div>
           {items.map((entry, index) => (
-            <Link
+            <NextLink
               key={index}
               href={entry.href}
               className="btn btn-ghost btn-md flex items-center justify-start font-sans text-lg font-medium text-neutral-700 hover:bg-primary/10"
             >
               {entry.name}
-            </Link>
+            </NextLink>
           ))}
         </div>
       </div>

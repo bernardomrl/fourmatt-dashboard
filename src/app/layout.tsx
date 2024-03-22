@@ -3,8 +3,12 @@ import { Inter } from 'next/font/google';
 
 import { Drawer } from '@/components/common';
 
-import { LayoutProps as Props } from '@/types/props';
 import { cn } from '@/utils';
+
+interface Props {
+  children: React.ReactNode;
+}
+
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export default function Layout({ children }: Props) {
