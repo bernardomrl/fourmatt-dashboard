@@ -1,7 +1,11 @@
 {
-  "name": "nextjs-project",
+  "name": "fourmatt-dashboard",
   "version": "1.0.0",
   "author": "Bernardo Meirelles <bernardomrl@icloud.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bernardomrl/fourmatt-dashboard.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
