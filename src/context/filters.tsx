@@ -2,11 +2,14 @@
 
 import { createContext, useContext, useState } from 'react';
 
-import { FiltersProps, ContextProps as Props } from '@/types/props';
-
+import { FiltersProps } from '@/types/props';
 interface FiltersContextProps {
   filters: FiltersProps;
   setFilters: React.Dispatch<React.SetStateAction<FiltersProps>>;
+}
+
+interface Props {
+  children: React.ReactNode;
 }
 
 const FiltersContext = createContext<FiltersContextProps | undefined>(
