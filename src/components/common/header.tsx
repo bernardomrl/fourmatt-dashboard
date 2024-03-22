@@ -1,9 +1,7 @@
-'use client';
+import { Fragment } from 'react';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link } from '@/components/ui';
 
-import { cn } from '@/utils';
 import { Bars3BottomLeftIcon } from '@heroicons/react/20/solid';
 
 const items = [
@@ -14,8 +12,6 @@ const items = [
 ];
 
 export function Header() {
-  const pathname = usePathname();
-
   return (
     <header className="fixed left-0 top-0 flex w-full items-center p-4">
       <nav className="flex items-center justify-center gap-4">
@@ -25,17 +21,10 @@ export function Header() {
         >
           <Bars3BottomLeftIcon className="h-5 w-5" />
         </label>
-        {items.map((item, index) => (
-          <Link
-            key={index}
-            href={item.href}
-            className={cn(
-              'btn btn-ghost btn-sm rounded-2xl font-sans font-semibold text-neutral-700 hover:bg-primary/25',
-              pathname === item.href && 'bg-primary/50 hover:bg-primary/75'
-            )}
-          >
-            {item.name}
-          </Link>
+        {items.map((entry, index) => (
+          <Fragment key={index}>
+            <Link href={entry.href}>{entry.name}</Link>
+          </Fragment>
         ))}
       </nav>
     </header>

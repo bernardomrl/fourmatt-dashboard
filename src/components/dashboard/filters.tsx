@@ -11,10 +11,19 @@ export function Filters() {
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      [name]: value
-    }));
+
+    if (name === 'category' && value === 'DEFAULT') {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        category: value,
+        application: 'DEFAULT'
+      }));
+    } else {
+      setFilters((prevFilters) => ({
+        ...prevFilters,
+        [name]: value
+      }));
+    }
   };
 
   const handlePickerChange = (e: DateValueType) => {
@@ -38,7 +47,6 @@ export function Filters() {
 
   const selectedCategoryApps = applications.length === 1 ? applications : [];
 
-  // Determine o valor padrão do aplicativo com base na categoria selecionada
   const defaultAppValue =
     selectedCategoryApps.length === 1
       ? selectedCategoryApps[0].application
@@ -77,7 +85,10 @@ export function Filters() {
         name="application"
         onChange={handleSelectChange}
       >
-        <option value={'DEFAULT'}>Applications</option>
+        {selectedCategoryApps.length >= 1 ||
+          (selectedCategoryApps.length === 0 && (
+            <option value={'DEFAULT'}>Applications</option>
+          ))}
         {applications.map((entry, index) => (
           <option key={index} value={entry.application}>
             {entry.application}
